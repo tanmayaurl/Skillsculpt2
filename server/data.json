@@ -1,0 +1,83 @@
+{
+  "students": [
+    {
+      "id": "1",
+      "name": "Asha",
+      "email": "asha@example.com",
+      "universityId": "1",
+      "skills": [
+        "Java",
+        "Spring",
+        "SQL",
+        "DSA"
+      ],
+      "certifications": [
+        "Oracle SQL"
+      ],
+      "achievements": [
+        "Smart India Hackathon finalist"
+      ],
+      "experienceYears": 0.5,
+      "resumeText": "Java developer with Spring and SQL, built APIs and solved DSA problems"
+    },
+    {
+      "id": "2",
+      "name": "Rahul",
+      "email": "rahul@example.com",
+      "universityId": "1",
+      "skills": [
+        "Python",
+        "Pandas",
+        "ML",
+        "NLP"
+      ],
+      "certifications": [
+        "Coursera ML"
+      ],
+      "achievements": [
+        "Published blog on sentiment analysis"
+      ],
+      "experienceYears": 1,
+      "resumeText": "Data science projects using Pandas, scikit-learn and NLP"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "1",
+      "title": "Java Backend Intern",
+      "company": "Acme Corp",
+      "requiredSkills": [
+        "Java",
+        "Spring",
+        "SQL"
+      ],
+      "minExperienceYears": 0,
+      "description": "Build REST APIs and work with relational databases",
+      "type": "internship",
+      "location": "Remote"
+    },
+    {
+      "id": "2",
+      "title": "Data Analyst",
+      "company": "InsightX",
+      "requiredSkills": [
+        "Python",
+        "Pandas",
+        "SQL"
+      ],
+      "minExperienceYears": 0,
+      "description": "Analyze datasets and build dashboards",
+      "type": "job",
+      "location": "Bangalore"
+    }
+  ],
+  "universities": [
+    {
+      "id": "1",
+      "name": "Tech University"
+    }
+  ],
+  "studentIdSeq": 3,
+  "jobIdSeq": 3,
+  "universityIdSeq": 2
+}

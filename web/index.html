@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Talent Bridge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1020;--bg2:#0f172a;--card:#0e1628;--border:#1f2937;--fg:#e5e7eb;--muted:#94a3b8;--accent:#38bdf8;--primary:#2563eb;--chip:#0b1220
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,Segoe UI,Arial;margin:0;background:radial-gradient(1200px 600px at 10% 0%,#0a1122 20%,#0b1020 60%,#0f172a 100%);color:var(--fg)}
+    .container{max-width:1200px;margin:0 auto;padding:24px}
+    header{position:sticky;top:0;background:linear-gradient(90deg,rgba(14,22,40,.9),rgba(14,22,40,.7));backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid var(--border)}
+    .nav{display:flex;align-items:center;gap:12px;padding:12px 24px}
+    .brand{font-weight:600;letter-spacing:.2px;color:white}
+    .nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px}
+    .nav a:hover{color:white;background:#0b1220}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .card{background:linear-gradient(180deg,rgba(17,24,39,.85),rgba(17,24,39,.65));border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+    .card h2{margin:0 0 12px;font-size:18px}
+    label{display:block;margin:10px 0 6px;color:var(--muted)}
+    input,textarea,select{width:100%;padding:10px 12px;border-radius:12px;border:1px solid #2b3648;background:#0b1220;color:var(--fg)}
+    button{margin-top:10px;background:linear-gradient(180deg,#2563eb,#1e40af);color:white;border:0;padding:10px 14px;border-radius:12px;cursor:pointer;transition:.2s transform}
+    button:hover{transform:translateY(-1px)}
+    ul{list-style:none;padding:0;margin:0}
+    li{padding:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+    .score{color:#93c5fd}
+    .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+    .chip{background:var(--chip);border:1px solid #243044;color:#cbd5e1;padding:5px 8px;border-radius:999px;font-size:12px}
+    .bar{height:8px;border-radius:6px;background:#0b1220;border:1px solid #1f2937;overflow:hidden}
+    .bar>div{height:100%;background:linear-gradient(90deg,#22d3ee,#6366f1)}
+    .badge{display:inline-block;margin-left:8px;background:#0b1220;border:1px solid #1f2937;color:#93c5fd;border-radius:999px;padding:4px 8px;font-size:12px}
+    .muted{color:var(--muted)}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
+    @media (max-width:600px){.nav{flex-wrap:wrap}.card{padding:14px}.container{padding:16px}}
+  </style>
+  </head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="brand">AI-Powered Talent Bridge</div>
+      <a href="#students">Students</a>
+      <a href="#jobs">Jobs</a>
+      <a href="#match">Match</a>
+      <a href="#search">Job Search</a>
+      <a href="#candidates">Candidate Search</a>
+      <span id="authBadge" class="badge" style="margin-left:auto">Not logged in</span>
+      <button id="btnLoginHeader">Login</button>
+      <button id="btnLogoutHeader">Logout</button>
+    </nav>
+  </header>
+  <div class="container">
+  <div class="grid" id="students">
+    <div class="card">
+      <h2>Add Student</h2>
+      <div id="studentForm">
+        <span class="badge">Student</span>
+        <label>Name</label>
+        <input id="s_name">
+        <label>Email</label>
+        <input id="s_email">
+        <label>University Id</label>
+        <input id="s_university">
+        <label>Skills (comma separated)</label>
+        <input id="s_skills">
+        <label>Certifications (comma separated)</label>
+        <input id="s_certs">
+        <label>Achievements (comma separated)</label>
+        <input id="s_ach">
+        <label>Experience Years</label>
+        <input id="s_exp" type="number" step="0.1" value="0">
+        <label>Resume Text</label>
+        <textarea id="s_resume"></textarea>
+        <button id="addStudent">Add Student</button>
+      </div>
+      <h3 style="margin-top:12px">Students</h3>
+      <ul id="students"></ul>
+    </div>
+    <div class="card" id="jobs">
+      <h2>Post Job <span class="badge" id="jobBadge" style="display:none">Secure</span></h2>
+      <div id="jobForm">
+      <label>Title</label>
+      <input id="j_title">
+      <label>Company</label>
+      <input id="j_company">
+      <label>Required Skills (comma separated)</label>
+      <input id="j_skills">
+      <label>Min Experience Years</label>
+      <input id="j_exp" type="number" step="0.1" value="0">
+      <label>Description</label>
+      <textarea id="j_desc"></textarea>
+      <label>Type</label>
+      <select id="j_type"><option>job</option><option>internship</option></select>
+      <label>Location</label>
+      <input id="j_loc">
+      <button id="addJob">Post Job</button>
+      </div>
+      <div style="margin-top:6px;color:#9ca3af">If logged in as employer, posts securely.</div>
+      <h3>Jobs</h3>
+      <ul id="jobs"></ul>
+    </div>
+  </div>
+  <div class="card" id="match" style="margin-top:16px">
+    <h2>Match & Optimize</h2>
+    <label>Select Student</label>
+    <select id="studentSelect"></select>
+    <button id="runMatch">Find Matches</button>
+    <button id="optResume">Optimize Resume</button>
+    <h3>Matches</h3>
+    <ul id="matches"></ul>
+    <h3>Resume Suggestions</h3>
+    <ul id="suggestions"></ul>
+  </div>
+  <div class="card" id="search" style="margin-top:16px">
+    <h2>Employer Search</h2>
+    <label>Skills (comma separated)</label>
+    <input id="q_skills" placeholder="e.g. Java, SQL">
+    <label>Type</label>
+    <select id="q_type"><option value="">Any</option><option>job</option><option>internship</option></select>
+    <label>Location contains</label>
+    <input id="q_loc" placeholder="e.g. Remote, Bangalore">
+    <label>Max Min Experience Years</label>
+    <input id="q_minexp" type="number" step="0.1" placeholder="e.g. 1">
+    <button id="runSearch">Search</button>
+    <h3>Results</h3>
+    <ul id="searchResults"></ul>
+  </div>
+  <div class="card" id="candidates" style="margin-top:16px">
+    <h2>Candidate Search</h2>
+    <label>Skills (comma separated)</label>
+    <input id="c_skills" placeholder="e.g. Python, SQL">
+    <label>University Id</label>
+    <input id="c_uni" placeholder="e.g. 1">
+    <label>Min Experience Years</label>
+    <input id="c_minexp" type="number" step="0.1" placeholder="e.g. 0.5">
+    <button id="runCandidateSearch">Search Candidates</button>
+    <h3>Candidate Results</h3>
+    <ul id="candidateResults"></ul>
+  </div>
+  <script src="script.js"></script>
+  </div>
+</body>
+</html>
